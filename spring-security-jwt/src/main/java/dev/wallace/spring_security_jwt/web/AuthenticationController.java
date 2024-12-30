@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.wallace.spring_security_jwt.security.AuthenticationService;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 public class AuthenticationController {
