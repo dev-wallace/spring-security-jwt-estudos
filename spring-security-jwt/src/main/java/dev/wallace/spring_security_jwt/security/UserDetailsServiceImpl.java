@@ -3,8 +3,10 @@ package dev.wallace.spring_security_jwt.security;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import dev.wallace.spring_security_jwt.repository.UserRepository;
+import org.springframework.stereotype.Service;
 
+import dev.wallace.spring_security_jwt.repository.UserRepository;
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService{
 
     private UserRepository userRepository;
