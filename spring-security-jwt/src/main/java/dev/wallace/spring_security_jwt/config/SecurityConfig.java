@@ -23,6 +23,7 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
+import com.nimbusds.jwt.JWT;
 
 @Configuration
 @EnableWebSecurity
@@ -53,5 +54,11 @@ public class SecurityConfig {
         return NimbusJwtDecoder.withPublicKey(key).build();
     }
 
-    
-}
+
+    @Bean
+    JwtEncoder jwtEncoder() {
+      JWK jwk = new RSAKey.Builder(this.key).privateKey(this.priv).build();
+      JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+      return new NimbusJwtEncoder(jwks);
+    }
+  }
